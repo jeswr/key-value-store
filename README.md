@@ -1,7 +1,7 @@
 # Key Value Store
 
 A small asynchronous TypeScript storage contract with adapters for browsers,
-Node.js, Bun and Deno. Values are typed at the store level; adapters preserve
+Node.js, Bun, Deno, VS Code and Electron. Values are typed at the store level; adapters preserve
 backend errors and never silently switch storage backends.
 
 **Experimental prototype. The packages are prepared for distribution but have
@@ -19,6 +19,8 @@ try them. Package names and APIs may change before a first release.
 | `@jeswr/key-value-bun` | `Bun.secrets` OS credential storage | Strings | No |
 | `@jeswr/key-value-node` | OS keychain via `@napi-rs/keyring` | Strings | No |
 | `@jeswr/key-value-deno` | Caller-owned `Deno.Kv` | Deno KV-supported values | No |
+| `@jeswr/key-value-vscode` | Caller-owned VS Code `SecretStorage` | Strings | No |
+| `@jeswr/key-value-electron` | Electron `safeStorage` + caller-owned byte store | Strings | No |
 
 The core has no runtime dependencies. Portable adapters have separate ESM export
 paths, so importing memory or Web Storage does not load IndexedDB code. Native
@@ -72,7 +74,10 @@ npm run build
 npm run check
 ```
 
-Use Node.js 22.18+ for development. Distribution files are ESM JavaScript and type
+Use Node.js 22.18+ for development. Set `ELECTRON_SKIP_BINARY_DOWNLOAD=1`
+in your environment when installing if you only need the tests: Electron is a
+development dependency for its official type declarations, and these tests do not
+need the runtime binary. Distribution files are ESM JavaScript and type
 declarations; npm workspaces link the package imports locally. All examples below
 use those imports. Consumers need only their chosen packages, not the monorepo's
 development dependencies.
@@ -197,6 +202,25 @@ These packages do not promise a shared on-disk format between Bun and Node; OS
 backend mappings can differ. Persisted namespace/key encoding is part of each
 adapter's format and should be versioned before future migrations.
 
+### VS Code and Electron
+
+```ts
+import { createVSCodeSecretStore } from '@jeswr/key-value-vscode';
+// Inside your extension, using its ExtensionContext:
+const secrets = createVSCodeSecretStore(context.secrets, { namespace: 'my-extension:v1' });
+```
+
+VS Code owns the storage and its security behavior. The adapter accepts its
+Thenables, adds namespacing and preserves host errors, without importing the VS
+Code runtime. See the [VS Code package](packages/vscode/README.md).
+
+Electron supplies encryption rather than persistence. The
+[Electron package](packages/electron/README.md) composes main-process `safeStorage`
+with a byte store supplied by the application. It refuses unavailable encryption
+and Linux's `basic_text` fallback. It uses the synchronous encryption API to check
+that API's selected Linux backend; it can block despite the async store interface.
+Its ciphertext backing store determines persistence, and key names remain visible.
+
 ### Deno KV
 
 ```ts
@@ -226,6 +250,8 @@ your Deno runtime. No JSR publication is included in this prototype.
 | Browser non-extractable signing keys | IndexedDB where supported |
 | Small secrets in a desktop/CLI app | Bun secrets or the Node OS keychain adapter |
 | General Deno application state | Deno KV |
+| VS Code extension secrets | The extension's `context.secrets` via the VS Code adapter |
+| Electron application secrets | Main-process `safeStorage` plus an application-owned ciphertext store |
 
 Browser IndexedDB and Web Storage are accessible to same-origin script. A
 non-extractable key prevents exporting private key material but does not prevent
@@ -249,7 +275,8 @@ npm pack --workspaces --dry-run
 The ordinary test suite uses injected credential backends and a native-binding
 import smoke test. It does not write to your personal OS keychain. Browser tests
 verify a non-extractable key remains usable after a reload. Deno integration uses
-an isolated in-memory database. Successful mocks/import checks do not establish
+an isolated in-memory database. VS Code and Electron adapters use injected hosts
+and compile-time checks against their published declarations. Successful mocks/import checks do not establish
 that a particular machine has an unlocked, usable OS credential service.
 
 CI runs the contract suite on Linux, macOS and Windows, Chromium integration on

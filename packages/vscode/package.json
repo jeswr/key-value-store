@@ -1,0 +1,35 @@
+{
+  "name": "@jeswr/key-value-vscode",
+  "version": "0.1.0",
+  "description": "VS Code SecretStorage adapter for asynchronous key-value storage.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeswr/key-value-store.git",
+    "directory": "packages/vscode"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@jeswr/key-value-core": "^0.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepack": "tsc -b"
+  }
+}
