@@ -1,6 +1,6 @@
 # @jeswr/key-value-vscode
 
-A dependency-free adapter around an extension's existing `context.secrets`.
+An adapter around an extension's existing `context.secrets`.
 Experimental; not yet published to npm.
 
 ```ts
