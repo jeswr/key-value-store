@@ -1,0 +1,27 @@
+{
+  "name": "key-value-store-workspace",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "test": "npm run build && node --test test/core.test.ts test/storage.test.ts test/bun.test.ts test/node.test.ts test/deno.test.ts",
+    "typecheck": "tsc -p test/tsconfig.json && tsc -p test/browser/tsconfig.json",
+    "check": "npm test && npm run typecheck",
+    "test:bun": "bun test test/bun-runtime.test.ts",
+    "test:deno": "deno test --unstable-kv test/deno-runtime.ts",
+    "test:browser": "npm run build && playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.19.0",
+    "esbuild": "^0.28.2",
+    "fake-indexeddb": "^6.2.4",
+    "typescript": "~5.9.3"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  }
+}

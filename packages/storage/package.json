@@ -1,0 +1,46 @@
+{
+  "name": "@jeswr/key-value-storage",
+  "version": "0.1.0",
+  "description": "Memory, Web Storage and IndexedDB adapters for asynchronous key-value storage.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeswr/key-value-store.git",
+    "directory": "packages/storage"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    "./memory": {
+      "types": "./dist/memory.d.ts",
+      "import": "./dist/memory.js",
+      "default": "./dist/memory.js"
+    },
+    "./web-storage": {
+      "types": "./dist/web-storage.d.ts",
+      "import": "./dist/web-storage.js",
+      "default": "./dist/web-storage.js"
+    },
+    "./indexeddb": {
+      "types": "./dist/indexeddb.d.ts",
+      "import": "./dist/indexeddb.js",
+      "default": "./dist/indexeddb.js"
+    }
+  },
+  "dependencies": {
+    "@jeswr/key-value-core": "^0.1.0",
+    "idb-keyval": "^6.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepack": "tsc -b"
+  }
+}
