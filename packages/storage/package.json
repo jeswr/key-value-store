@@ -1,6 +1,6 @@
 {
-  "name": "@jeswr/key-value-storage",
-  "version": "0.1.0",
+  "name": "@key-value-kit/storage",
+  "version": "0.1.0-alpha.0",
   "description": "Memory, Web Storage and IndexedDB adapters for asynchronous key-value storage.",
   "type": "module",
   "license": "MIT",
@@ -34,11 +34,13 @@
     }
   },
   "dependencies": {
-    "@jeswr/key-value-core": "^0.1.0",
+    "@key-value-kit/core": "0.1.0-alpha.0",
     "idb-keyval": "^6.3.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "alpha",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "prepack": "tsc -b"

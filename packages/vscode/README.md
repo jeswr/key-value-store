@@ -1,11 +1,11 @@
-# @jeswr/key-value-vscode
+# @key-value-kit/vscode
 
 An adapter around an extension's existing `context.secrets`.
-Experimental; not yet published to npm.
+Experimental alpha (`0.1.0-alpha.0`).
 
 ```ts
 import type { ExtensionContext } from 'vscode';
-import { createVSCodeSecretStore } from '@jeswr/key-value-vscode';
+import { createVSCodeSecretStore } from '@key-value-kit/vscode';
 
 export async function activate(context: ExtensionContext) {
   const secrets = createVSCodeSecretStore(context.secrets, {

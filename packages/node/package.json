@@ -1,6 +1,6 @@
 {
-  "name": "@jeswr/key-value-node",
-  "version": "0.1.0",
+  "name": "@key-value-kit/node",
+  "version": "0.1.0-alpha.0",
   "description": "Node.js OS keychain adapter.",
   "type": "module",
   "license": "MIT",
@@ -24,14 +24,16 @@
     }
   },
   "dependencies": {
-    "@jeswr/key-value-core": "^0.1.0",
+    "@key-value-kit/core": "0.1.0-alpha.0",
     "@napi-rs/keyring": "^2.1.0"
   },
   "engines": {
     "node": ">=22.18.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "alpha",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "prepack": "tsc -b"

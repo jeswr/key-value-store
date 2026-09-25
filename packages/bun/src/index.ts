@@ -1,5 +1,5 @@
-import { assertKey, assertStringValue, namespacePrefix } from '@jeswr/key-value-core';
-import type { KeyValueStore } from '@jeswr/key-value-core';
+import { assertKey, assertStringValue, namespacePrefix } from '@key-value-kit/core';
+import type { KeyValueStore } from '@key-value-kit/core';
 
 /** The subset of Bun.secrets this adapter uses; injectable for testing. */
 export interface BunSecrets {

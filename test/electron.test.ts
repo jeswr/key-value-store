@@ -2,10 +2,10 @@ import assert from 'node:assert/strict';
 import { Buffer } from 'node:buffer';
 import { createCipheriv, createDecipheriv, randomBytes } from 'node:crypto';
 import { test } from 'node:test';
-import { namespacePrefix } from '@jeswr/key-value-core';
-import { createMemoryStore } from '@jeswr/key-value-storage/memory';
-import { createElectronSecretStore } from '@jeswr/key-value-electron';
-import type { ElectronSafeStorage } from '@jeswr/key-value-electron';
+import { namespacePrefix } from '@key-value-kit/core';
+import { createMemoryStore } from '@key-value-kit/storage/memory';
+import { createElectronSecretStore } from '@key-value-kit/electron';
+import type { ElectronSafeStorage } from '@key-value-kit/electron';
 import { stringContract } from './helpers.ts';
 
 // An isolated test cipher, not Electron's OS-backed implementation.

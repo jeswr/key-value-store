@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import type { KeyValueStore } from '@jeswr/key-value-core';
-import type { WebStorage } from '@jeswr/key-value-storage/web-storage';
+import type { KeyValueStore } from '@key-value-kit/core';
+import type { WebStorage } from '@key-value-kit/storage/web-storage';
 
 export function stringContract(name: string, create: () => KeyValueStore<string>): void {
   test(`${name}: shared string store contract`, async () => {

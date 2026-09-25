@@ -1,13 +1,12 @@
-# @jeswr/key-value-electron
+# @key-value-kit/electron
 
 A main-process adapter composing Electron `safeStorage` encryption with a
-caller-owned `KeyValueStore<Uint8Array>` for ciphertext. Experimental; not yet
-published to npm. There is no Electron runtime dependency or built-in file store.
+caller-owned `KeyValueStore<Uint8Array>` for ciphertext. Experimental alpha (`0.1.0-alpha.0`). There is no Electron runtime dependency or built-in file store.
 
 ```ts
 import { app, safeStorage } from 'electron';
-import type { KeyValueStore } from '@jeswr/key-value-core';
-import { createElectronSecretStore } from '@jeswr/key-value-electron';
+import type { KeyValueStore } from '@key-value-kit/core';
+import { createElectronSecretStore } from '@key-value-kit/electron';
 
 // Supply your application's existing durable byte store.
 export async function openSecrets(ciphertexts: KeyValueStore<Uint8Array>) {

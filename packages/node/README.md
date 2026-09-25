@@ -1,10 +1,9 @@
-# @jeswr/key-value-node
+# @key-value-kit/node
 
-An OS keychain adapter backed by `@napi-rs/keyring`. Experimental; not yet published
-to npm. Requires Node.js 22.18+ and a working OS credential backend.
+An OS keychain adapter backed by `@napi-rs/keyring`. Experimental alpha (`0.1.0-alpha.0`). Requires Node.js 22.18+ and a working OS credential backend.
 
 ```ts
-import { createKeychainStore } from '@jeswr/key-value-node';
+import { createKeychainStore } from '@key-value-kit/node';
 const store = createKeychainStore({ namespace: 'example:credentials:v1' });
 await store.setItem('refresh-token', 'secret');
 ```

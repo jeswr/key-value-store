@@ -1,5 +1,5 @@
 {
-  "name": "key-value-store-workspace",
+  "name": "key-value-kit-workspace",
   "private": true,
   "type": "module",
   "workspaces": [

@@ -1,8 +1,8 @@
 import 'fake-indexeddb/auto';
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { createWebStorageStore } from '@jeswr/key-value-storage/web-storage';
-import { createIndexedDbStore } from '@jeswr/key-value-storage/indexeddb';
+import { createWebStorageStore } from '@key-value-kit/storage/web-storage';
+import { createIndexedDbStore } from '@key-value-kit/storage/indexeddb';
 import { memoryWebStorage, stringContract } from './helpers.ts';
 
 stringContract('Web Storage', () => createWebStorageStore(memoryWebStorage(), { namespace: 'contract' }));

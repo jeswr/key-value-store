@@ -1,7 +1,7 @@
 import { Buffer } from 'node:buffer';
 import { platform } from 'node:process';
-import { assertStringValue, withCodec, withNamespace } from '@jeswr/key-value-core';
-import type { KeyValueStore } from '@jeswr/key-value-core';
+import { assertStringValue, withCodec, withNamespace } from '@key-value-kit/core';
+import type { KeyValueStore } from '@key-value-kit/core';
 
 /** The synchronous safeStorage API. The actual Electron object can be passed directly. */
 export interface ElectronSafeStorage {

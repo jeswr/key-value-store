@@ -1,5 +1,5 @@
-import { assertKey, assertStoredValue, namespacePrefix } from '@jeswr/key-value-core';
-import type { KeyValueStore, StoredValue } from '@jeswr/key-value-core';
+import { assertKey, assertStoredValue, namespacePrefix } from '@key-value-kit/core';
+import type { KeyValueStore, StoredValue } from '@key-value-kit/core';
 
 /** Accepts a caller-owned Deno.Kv without depending on Deno ambient types. */
 export interface DenoKv {

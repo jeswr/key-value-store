@@ -1,6 +1,6 @@
 {
-  "name": "@jeswr/key-value-core",
-  "version": "0.1.0",
+  "name": "@key-value-kit/core",
+  "version": "0.1.0-alpha.0",
   "description": "Small asynchronous key-value contracts and composable storage utilities.",
   "type": "module",
   "license": "MIT",
@@ -24,7 +24,9 @@
     }
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "alpha",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "prepack": "tsc -b"

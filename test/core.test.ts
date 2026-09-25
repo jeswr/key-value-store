@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { withCodec, withExpiry, withNamespace } from '@jeswr/key-value-core';
-import type { Codec, ExpiringValue } from '@jeswr/key-value-core';
-import { createMemoryStore } from '@jeswr/key-value-storage/memory';
+import { withCodec, withExpiry, withNamespace } from '@key-value-kit/core';
+import type { Codec, ExpiringValue } from '@key-value-kit/core';
+import { createMemoryStore } from '@key-value-kit/storage/memory';
 
 test('memory preserves falsy values, reference identity, and opaque keys', async () => {
   const store = createMemoryStore<{}>();

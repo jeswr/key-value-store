@@ -1,10 +1,9 @@
-# @jeswr/key-value-deno
+# @key-value-kit/deno
 
-An adapter for a caller-owned `Deno.Kv`. Experimental; not yet published to npm or
-JSR. Tested with Deno 2.9.6 and `--unstable-kv`.
+An adapter for a caller-owned `Deno.Kv`. Experimental alpha (`0.1.0-alpha.0`); no JSR publication. Tested with Deno 2.9.6 and `--unstable-kv`.
 
 ```ts
-import { createDenoKvStore } from '@jeswr/key-value-deno';
+import { createDenoKvStore } from '@key-value-kit/deno';
 const kv = await Deno.openKv();
 try {
   const store = createDenoKvStore<{ value: number }>(kv, { namespace: 'example:v1' });

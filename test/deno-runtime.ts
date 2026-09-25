@@ -1,4 +1,4 @@
-import { createDenoKvStore } from '@jeswr/key-value-deno';
+import { createDenoKvStore } from '@key-value-kit/deno';
 
 Deno.test('actual Deno KV persists structured values and isolates namespaces', async () => {
   const kv = await Deno.openKv(':memory:');

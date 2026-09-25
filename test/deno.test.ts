@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { createDenoKvStore } from '@jeswr/key-value-deno';
-import type { DenoKv } from '@jeswr/key-value-deno';
+import { createDenoKvStore } from '@key-value-kit/deno';
+import type { DenoKv } from '@key-value-kit/deno';
 
 function fakeKv(): DenoKv {
   const values = new Map<string, unknown>();

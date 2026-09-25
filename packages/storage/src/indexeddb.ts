@@ -1,6 +1,6 @@
 import { clear, createStore, del, get, set } from 'idb-keyval';
-import { assertKey, assertStoredValue, namespacePrefix } from '@jeswr/key-value-core';
-import type { ClearableStore, StoredValue } from '@jeswr/key-value-core';
+import { assertKey, assertStoredValue, namespacePrefix } from '@key-value-kit/core';
+import type { ClearableStore, StoredValue } from '@key-value-kit/core';
 
 /** Each namespace owns a dedicated database, including its clear operation. */
 export function createIndexedDbStore<T extends StoredValue>(

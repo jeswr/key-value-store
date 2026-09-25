@@ -10,8 +10,8 @@ let origin: string;
 test.beforeAll(async () => {
   const bundle = await build({
     stdin: {
-      contents: `export { createWebStorageStore } from '@jeswr/key-value-storage/web-storage';
-        export { createIndexedDbStore } from '@jeswr/key-value-storage/indexeddb';`,
+      contents: `export { createWebStorageStore } from '@key-value-kit/storage/web-storage';
+        export { createIndexedDbStore } from '@key-value-kit/storage/indexeddb';`,
       resolveDir: process.cwd(),
     },
     bundle: true, format: 'esm', platform: 'browser', write: false,
@@ -95,7 +95,7 @@ test('IndexedDB retains a non-extractable signing key across a page reload', asy
 
 test('the memory entry point bundles without IndexedDB or native dependencies', async () => {
   const result = await build({
-    stdin: { contents: `export { createMemoryStore } from '@jeswr/key-value-storage/memory';`, resolveDir: process.cwd() },
+    stdin: { contents: `export { createMemoryStore } from '@key-value-kit/storage/memory';`, resolveDir: process.cwd() },
     bundle: true, format: 'esm', platform: 'browser', write: false, metafile: true,
   });
   const inputs = Object.keys(result.metafile.inputs);

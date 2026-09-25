@@ -1,12 +1,11 @@
-# @jeswr/key-value-storage
+# @key-value-kit/storage
 
-Portable adapters with separate ESM entry points. Experimental; not yet published
-to npm. See the [repository guide](https://github.com/jeswr/key-value-store#browser-storage).
+Portable adapters with separate ESM entry points. Experimental alpha (`0.1.0-alpha.0`). See the [repository guide](https://github.com/jeswr/key-value-store#browser-storage).
 
 ```ts
-import { createMemoryStore } from '@jeswr/key-value-storage/memory';
-import { createWebStorageStore } from '@jeswr/key-value-storage/web-storage';
-import { createIndexedDbStore } from '@jeswr/key-value-storage/indexeddb';
+import { createMemoryStore } from '@key-value-kit/storage/memory';
+import { createWebStorageStore } from '@key-value-kit/storage/web-storage';
+import { createIndexedDbStore } from '@key-value-kit/storage/indexeddb';
 
 const memory = createMemoryStore<{ value: number }>();
 const strings = createWebStorageStore(localStorage, { namespace: 'example:settings:v1' });

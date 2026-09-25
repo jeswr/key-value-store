@@ -1,5 +1,5 @@
-import { assertKey, assertStringValue, namespacePrefix } from '@jeswr/key-value-core';
-import type { ClearableStore } from '@jeswr/key-value-core';
+import { assertKey, assertStringValue, namespacePrefix } from '@key-value-kit/core';
+import type { ClearableStore } from '@key-value-kit/core';
 
 /** Structurally compatible with localStorage and sessionStorage. */
 export interface WebStorage {

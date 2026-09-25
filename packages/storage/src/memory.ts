@@ -1,5 +1,5 @@
-import { assertKey, assertStoredValue } from '@jeswr/key-value-core';
-import type { ClearableStore, StoredValue } from '@jeswr/key-value-core';
+import { assertKey, assertStoredValue } from '@key-value-kit/core';
+import type { ClearableStore, StoredValue } from '@key-value-kit/core';
 
 /** Each instance owns its map. Values retain JavaScript reference identity. */
 export function createMemoryStore<T extends StoredValue>(): ClearableStore<T> {

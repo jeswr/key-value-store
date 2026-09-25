@@ -1,6 +1,6 @@
 {
-  "name": "@jeswr/key-value-electron",
-  "version": "0.1.0",
+  "name": "@key-value-kit/electron",
+  "version": "0.1.0-alpha.0",
   "description": "Electron safeStorage encryption adapter with caller-owned ciphertext storage.",
   "type": "module",
   "license": "MIT",
@@ -24,10 +24,12 @@
     }
   },
   "dependencies": {
-    "@jeswr/key-value-core": "^0.1.0"
+    "@key-value-kit/core": "0.1.0-alpha.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "alpha",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "prepack": "tsc -b"

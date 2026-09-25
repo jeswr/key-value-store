@@ -1,26 +1,27 @@
-# Key Value Store
+# Key Value Kit
 
 A small asynchronous TypeScript storage contract with adapters for browsers,
 Node.js, Bun, Deno, VS Code and Electron. Values are typed at the store level; adapters preserve
 backend errors and never silently switch storage backends.
 
-**Experimental prototype. The packages are prepared for distribution but have
-not been published to npm.** Clone this repository and build the workspaces to
-try them. Package names and APIs may change before a first release.
+**Experimental alpha: `0.1.0-alpha.0`, targeting the npm `alpha` dist-tag.**
+The npm scope is `@key-value-kit`; the GitHub repository remains
+`jeswr/key-value-store`. The API may change between alpha versions.
+See [release instructions](RELEASING.md) for publication and verification.
 
 ## Packages
 
 | Package / import | Purpose | Values | `clear()` |
 | --- | --- | --- | --- |
-| `@jeswr/key-value-core` | Interfaces, namespaces, codecs and expiry | Backend-dependent | Preserved by codec/expiry wrappers |
-| `@jeswr/key-value-storage/memory` | An instance-owned `Map` | JavaScript values by reference | Yes |
-| `@jeswr/key-value-storage/web-storage` | `localStorage`, `sessionStorage`, compatible implementations | Strings | Only its namespace |
-| `@jeswr/key-value-storage/indexeddb` | IndexedDB via `idb-keyval` | Structured-cloneable values | Only its namespace |
-| `@jeswr/key-value-bun` | `Bun.secrets` OS credential storage | Strings | No |
-| `@jeswr/key-value-node` | OS keychain via `@napi-rs/keyring` | Strings | No |
-| `@jeswr/key-value-deno` | Caller-owned `Deno.Kv` | Deno KV-supported values | No |
-| `@jeswr/key-value-vscode` | Caller-owned VS Code `SecretStorage` | Strings | No |
-| `@jeswr/key-value-electron` | Electron `safeStorage` + caller-owned byte store | Strings | No |
+| `@key-value-kit/core` | Interfaces, namespaces, codecs and expiry | Backend-dependent | Preserved by codec/expiry wrappers |
+| `@key-value-kit/storage/memory` | An instance-owned `Map` | JavaScript values by reference | Yes |
+| `@key-value-kit/storage/web-storage` | `localStorage`, `sessionStorage`, compatible implementations | Strings | Only its namespace |
+| `@key-value-kit/storage/indexeddb` | IndexedDB via `idb-keyval` | Structured-cloneable values | Only its namespace |
+| `@key-value-kit/bun` | `Bun.secrets` OS credential storage | Strings | No |
+| `@key-value-kit/node` | OS keychain via `@napi-rs/keyring` | Strings | No |
+| `@key-value-kit/deno` | Caller-owned `Deno.Kv` | Deno KV-supported values | No |
+| `@key-value-kit/vscode` | Caller-owned VS Code `SecretStorage` | Strings | No |
+| `@key-value-kit/electron` | Electron `safeStorage` + caller-owned byte store | Strings | No |
 
 The core has no runtime dependencies. Portable adapters have separate ESM export
 paths, so importing memory or Web Storage does not load IndexedDB code. Native
@@ -83,7 +84,7 @@ use those imports. Consumers need only their chosen packages, not the monorepo's
 development dependencies.
 
 ```ts
-import { createMemoryStore } from '@jeswr/key-value-storage/memory';
+import { createMemoryStore } from '@key-value-kit/storage/memory';
 
 const store = createMemoryStore<{ issuer: string }>();
 await store.setItem('configuration', { issuer: 'https://issuer.example' });
@@ -94,8 +95,8 @@ await store.removeItem('configuration');
 ### Browser storage
 
 ```ts
-import { createWebStorageStore } from '@jeswr/key-value-storage/web-storage';
-import { createIndexedDbStore } from '@jeswr/key-value-storage/indexeddb';
+import { createWebStorageStore } from '@key-value-kit/storage/web-storage';
+import { createIndexedDbStore } from '@key-value-kit/storage/indexeddb';
 
 const preferences = createWebStorageStore(localStorage, { namespace: 'my-app:preferences:v1' });
 await preferences.setItem('theme', 'dark');
@@ -117,9 +118,9 @@ quota, privacy policies and browser eviction still apply.
 ### Explicit codecs
 
 ```ts
-import { withCodec } from '@jeswr/key-value-core';
-import type { Codec } from '@jeswr/key-value-core';
-import { createWebStorageStore } from '@jeswr/key-value-storage/web-storage';
+import { withCodec } from '@key-value-kit/core';
+import type { Codec } from '@key-value-kit/core';
+import { createWebStorageStore } from '@key-value-kit/storage/web-storage';
 
 type Settings = { theme: 'light' | 'dark' };
 function validate(value: unknown): Settings {
@@ -147,9 +148,9 @@ cycles or all JavaScript value types. There is no implicit JSON codec.
 ### Expiry and namespace composition
 
 ```ts
-import { withExpiry, withNamespace } from '@jeswr/key-value-core';
-import type { ExpiringValue } from '@jeswr/key-value-core';
-import { createMemoryStore } from '@jeswr/key-value-storage/memory';
+import { withExpiry, withNamespace } from '@key-value-kit/core';
+import type { ExpiringValue } from '@key-value-kit/core';
+import { createMemoryStore } from '@key-value-kit/storage/memory';
 
 const cache = withExpiry(
   createMemoryStore<ExpiringValue<{ issuer: string }>>(),
@@ -177,11 +178,11 @@ backing store's existing `clear()` capability.
 
 ```ts
 // Bun
-import { createBunSecretStore } from '@jeswr/key-value-bun';
+import { createBunSecretStore } from '@key-value-kit/bun';
 const bunSecrets = createBunSecretStore({ namespace: 'my-app:credentials:v1' });
 
 // Node.js
-import { createKeychainStore } from '@jeswr/key-value-node';
+import { createKeychainStore } from '@key-value-kit/node';
 const nodeSecrets = createKeychainStore({ namespace: 'my-app:credentials:v1' });
 ```
 
@@ -205,7 +206,7 @@ adapter's format and should be versioned before future migrations.
 ### VS Code and Electron
 
 ```ts
-import { createVSCodeSecretStore } from '@jeswr/key-value-vscode';
+import { createVSCodeSecretStore } from '@key-value-kit/vscode';
 // Inside your extension, using its ExtensionContext:
 const secrets = createVSCodeSecretStore(context.secrets, { namespace: 'my-extension:v1' });
 ```
@@ -224,7 +225,7 @@ Its ciphertext backing store determines persistence, and key names remain visibl
 ### Deno KV
 
 ```ts
-import { createDenoKvStore } from '@jeswr/key-value-deno';
+import { createDenoKvStore } from '@key-value-kit/deno';
 
 const kv = await Deno.openKv();
 try {

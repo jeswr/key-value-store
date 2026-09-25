@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { createKeychainStore } from '@jeswr/key-value-node';
-import type { KeychainStoreOptions } from '@jeswr/key-value-node';
+import { createKeychainStore } from '@key-value-kit/node';
+import type { KeychainStoreOptions } from '@key-value-kit/node';
 import { stringContract } from './helpers.ts';
 
 function fakeKeychain(): NonNullable<KeychainStoreOptions['createEntry']> {

@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { build } from 'esbuild';
-import { createVSCodeSecretStore } from '@jeswr/key-value-vscode';
-import type { VSCodeSecretStorage } from '@jeswr/key-value-vscode';
+import { createVSCodeSecretStore } from '@key-value-kit/vscode';
+import type { VSCodeSecretStorage } from '@key-value-kit/vscode';
 import { stringContract } from './helpers.ts';
 
 function fakeSecrets(): VSCodeSecretStorage {
@@ -62,7 +62,7 @@ test('VS Code accepts PromiseLike results and waits for writes to finish', async
 
 test('VS Code adapter bundles for a web extension without a host runtime dependency', async () => {
   const result = await build({
-    stdin: { contents: "export { createVSCodeSecretStore } from '@jeswr/key-value-vscode';", resolveDir: process.cwd() },
+    stdin: { contents: "export { createVSCodeSecretStore } from '@key-value-kit/vscode';", resolveDir: process.cwd() },
     platform: 'browser', format: 'esm', bundle: true, write: false, metafile: true,
   });
   const inputs = Object.keys(result.metafile.inputs);

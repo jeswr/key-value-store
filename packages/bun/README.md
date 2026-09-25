@@ -1,10 +1,9 @@
-# @jeswr/key-value-bun
+# @key-value-kit/bun
 
-An adapter for Bun's experimental OS credential storage API. Experimental; not yet
-published to npm. Tested with Bun 1.3.13.
+An adapter for Bun's experimental OS credential storage API. Experimental alpha (`0.1.0-alpha.0`). Tested with Bun 1.3.13.
 
 ```ts
-import { createBunSecretStore } from '@jeswr/key-value-bun';
+import { createBunSecretStore } from '@key-value-kit/bun';
 const store = createBunSecretStore({ namespace: 'example:credentials:v1' });
 await store.setItem('refresh-token', 'secret');
 ```

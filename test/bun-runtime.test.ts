@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 import { secrets } from 'bun';
-import { createBunSecretStore } from '@jeswr/key-value-bun';
+import { createBunSecretStore } from '@key-value-kit/bun';
 
 test('the actual Bun secrets API can instantiate the adapter without keychain access', () => {
   expect(typeof secrets.get).toBe('function');

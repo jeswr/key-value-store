@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { createBunSecretStore } from '@jeswr/key-value-bun';
-import type { BunSecrets } from '@jeswr/key-value-bun';
+import { createBunSecretStore } from '@key-value-kit/bun';
+import type { BunSecrets } from '@key-value-kit/bun';
 import { stringContract } from './helpers.ts';
 
 function fakeSecrets(): BunSecrets {
