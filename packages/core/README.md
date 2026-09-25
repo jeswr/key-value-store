@@ -1,6 +1,6 @@
 # @key-value-kit/core
 
-Dependency-free asynchronous key-value interfaces and wrappers. Experimental alpha (`0.1.0-alpha.0`). See the [repository guide](https://github.com/jeswr/key-value-store#contract)
+Dependency-free asynchronous key-value interfaces and wrappers. Experimental alpha (`0.1.0-alpha.0`). See the [repository guide](https://github.com/jeswr/KeyValueKit#contract)
 for the full contract and examples.
 
 Exports `KeyValueStore<T>`, `ClearableStore<T>`, `StoredValue`, `Codec<T, Encoded>`,

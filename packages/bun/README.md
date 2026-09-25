@@ -16,4 +16,4 @@ lengths and secret sizes remain subject to OS limits. No plaintext fallback.
 Pass a `secrets: BunSecrets` implementation for testing or explicit dependency
 injection. Default tests check the real API shape and use injected backends for
 CRUD, without touching your OS vault. See the
-[repository guide](https://github.com/jeswr/key-value-store#os-credential-stores).
+[repository guide](https://github.com/jeswr/KeyValueKit#os-credential-stores).

@@ -19,4 +19,4 @@ are rejected. The generic interface does not expose transactions or namespace
 clearing. The adapter neither opens nor closes the database. Deno KV is general
 persistence and makes no OS credential-vault guarantee.
 
-See the [repository guide](https://github.com/jeswr/key-value-store#deno-kv).
+See the [repository guide](https://github.com/jeswr/KeyValueKit#deno-kv).

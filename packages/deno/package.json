@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jeswr/key-value-store.git",
+    "url": "git+https://github.com/jeswr/KeyValueKit.git",
     "directory": "packages/deno"
   },
   "sideEffects": false,

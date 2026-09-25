@@ -5,8 +5,8 @@ Node.js, Bun, Deno, VS Code and Electron. Values are typed at the store level; a
 backend errors and never silently switch storage backends.
 
 **Experimental alpha: `0.1.0-alpha.0`, targeting the npm `alpha` dist-tag.**
-The npm scope is `@key-value-kit`; the GitHub repository remains
-`jeswr/key-value-store`. The API may change between alpha versions.
+The npm scope is `@key-value-kit`; the GitHub repository is
+`jeswr/KeyValueKit`. The API may change between alpha versions.
 See [release instructions](RELEASING.md) for publication and verification.
 
 ## Packages
@@ -68,8 +68,8 @@ export interface Codec<T, Encoded> {
 ## Try it
 
 ```sh
-git clone https://github.com/jeswr/key-value-store.git
-cd key-value-store
+git clone https://github.com/jeswr/KeyValueKit.git
+cd KeyValueKit
 npm ci
 npm run build
 npm run check

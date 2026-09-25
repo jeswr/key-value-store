@@ -20,4 +20,4 @@ supplied compatible vault. The adapter's guarantees depend on that supplied
 backend honoring the contract. Default tests use injected entries and verify the
 native API can import without writing personal credentials.
 
-See the [repository guide](https://github.com/jeswr/key-value-store#os-credential-stores).
+See the [repository guide](https://github.com/jeswr/KeyValueKit#os-credential-stores).

@@ -1,8 +1,8 @@
 # Alpha releases
 
-The GitHub repository is `jeswr/key-value-store`; only the npm scope changes to
-`@key-value-kit`. Create a free npm organization with that name and ensure the
-publishing account is an owner or authorized publisher before releasing.
+The GitHub repository is `jeswr/KeyValueKit` and the npm scope is
+`@key-value-kit`. Ensure the publishing account is an owner or authorized
+publisher of the npm organization before releasing.
 
 ## Validate and pack
 
