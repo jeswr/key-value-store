@@ -44,8 +44,14 @@ and its integrity before retrying: a published name/version cannot be overwritte
 
 For each package, inspect `npm view @key-value-kit/<package>@0.1.0-alpha.0`
 and `npm dist-tag ls @key-value-kit/<package>`. Confirm `alpha` identifies the
-release and `latest` has not been introduced. Install the seven exact registry
-versions in a clean consumer directory and run import and TypeScript checks.
+release. On the first publication, npm also assigns `latest` even when publishing
+with `--tag alpha`; removal was rejected with HTTP 400 for this release. See
+[npm/cli#8490](https://github.com/npm/cli/issues/8490). Document the actual tags
+in the release notes and recommend explicit `@alpha` installs. For subsequent
+alpha releases, verify that `latest` has not moved to the new version.
+
+Install the seven exact registry versions in a clean consumer directory and run
+import and TypeScript checks.
 Only then tag the matching source revision `v0.1.0-alpha.0` and create a GitHub
 prerelease. Do not announce publication until the registry checks succeed.
 
